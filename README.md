@@ -5,7 +5,17 @@
 we did a create react app 
 configured tailwind css in app
 -Header
+-Routing
  -Build our login form
+ -signin and signup
+ -form validation
+ -useRefHook
+  https://netflixgpt-5ae45.web.app
+  firebase setup
+  deploying our project
+  -create signup user account
+  -implement signin user API
+  -Created Redux store with user Slice
 
 # features
  login/ singnup form
