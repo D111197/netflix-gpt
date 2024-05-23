@@ -1,6 +1,8 @@
 -netlix-gpt
 -create app
 -confugre tailwind
+-lginForm
+-signUpForm
 
 Features
 login/signup page
