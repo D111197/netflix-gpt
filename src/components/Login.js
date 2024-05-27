@@ -7,15 +7,14 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../Utiles/UserSice";
+import { BACKGROUND, PHOTOURL } from "../Utiles/constants";
 
 const Login = () => {
   const [isSignInForm, setIsignInForm] = useState(true);
 
   const [errormessage, setErrormesssage] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const name = useRef(null);
@@ -37,8 +36,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL:
-              "https://media.licdn.com/dms/image/D4D35AQG8DopwDNbtAA/profile-framedphoto-shrink_200_200/0/1689754818636?e=1717243200&v=beta&t=SGZIsH5HuP0wSGKXnICk5cqpMOUV5mfHIryRd_D-bmo",
+            photoURL: PHOTOURL,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -50,7 +48,6 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browser");
             })
             .catch((error) => {
               const errorCode = error.code;
@@ -71,7 +68,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          navigate("/browser");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -88,10 +84,7 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/a99688ca-33c3-4099-9baa-07a2e2acb398/ca15fd28-b624-4852-8bfe-9cdd5c88475d/IN-en-20240520-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-          alt="backGround"
-        />
+        <img src={BACKGROUND} alt="backGround" />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
